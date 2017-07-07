@@ -10,11 +10,11 @@
 #include <optitrack_body_twist_gen/or_pose_estimator_state.h>
 using Eigen::MatrixXd;
 using namespace std;
-class RealSense
+class convertor
 {
         public:
 
-                RealSense();
+                convertor();
 
                 void chatterCallback(const optitrack_body_twist_gen::or_pose_estimator_state::ConstPtr& msg);
                 
@@ -34,18 +34,18 @@ class RealSense
 };
 
 
-RealSense::RealSense()
+convertor::convertor()
 {
         // Initialize all position variables and orientation variables
         //mocap variables
         cout << " In the constructor " << endl;
         x = y = z = ex = ey = ez = ew = 0;
-        sub = nh_.subscribe("/optitrack/bodies/brunelleschi", 1000, &RealSense::chatterCallback, this);
+        sub = nh_.subscribe("/optitrack/bodies/brunelleschi", 1000, &convertor::chatterCallback, this);
         pub = nh_.advertise<nav_msgs::Odometry>("/brunelleschi/odom",100);
         previousTimestamp = ros::Time(0);
 }
 
-void RealSense::chatterCallback(const optitrack_body_twist_gen::or_pose_estimator_state::ConstPtr& msg)
+void convertor::chatterCallback(const optitrack_body_twist_gen::or_pose_estimator_state::ConstPtr& msg)
 {
 
     //If empty messages are not taken care then the node crashes
@@ -112,7 +112,7 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "optitrack_body_twist_gen_node");
 
-        RealSense rs;
+        convertor rs;
 
         ros::Rate loop_rate(115);
         while (ros::ok())
