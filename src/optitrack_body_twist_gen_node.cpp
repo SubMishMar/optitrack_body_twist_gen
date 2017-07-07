@@ -80,6 +80,7 @@ void convertor::chatterCallback(const optitrack_body_twist_gen::or_pose_estimato
      body_odom.twist.twist.angular.x = 0;
      body_odom.twist.twist.angular.y = 0;
      body_odom.twist.twist.angular.z = 0;
+     cout << "The beginning of time...." << endl;
     }
     else
     {
@@ -114,7 +115,7 @@ int main(int argc, char **argv)
 
         convertor rs;
 
-        ros::Rate loop_rate(115);
+        ros::Rate loop_rate(50);
         while (ros::ok())
         {
 
