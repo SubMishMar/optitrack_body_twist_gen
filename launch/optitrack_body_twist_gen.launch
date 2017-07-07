@@ -1,0 +1,3 @@
+<launch>
+   <node name="optitrack_body_twist_gen_node" pkg="optitrack_body_twist_gen" type="optitrack_body_twist_gen_node" output="screen" />
+</launch>
