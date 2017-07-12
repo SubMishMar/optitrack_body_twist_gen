@@ -16,9 +16,7 @@ class convertor
 
                 convertor();
 
-                void chatterCallback(const optitrack_body_twist_gen::or_pose_estimator_state::ConstPtr& msg);
-                
-
+                void chatterCallback(const optitrack_body_twist_gen::or_pose_estimator_state::ConstPtr& msg);  
         private:
                 ros::NodeHandle nh_;
                 ros::Publisher pub;
@@ -27,8 +25,8 @@ class convertor
 
                 double ex, ey, ez, ew;
                 double x, y, z;
-                geometry_msgs::Pose previousPose;
                 nav_msgs::Odometry body_odom;
+                geometry_msgs::Pose previousPose;
                 ros::Time previousTimestamp;
 
 };
@@ -115,7 +113,7 @@ int main(int argc, char **argv)
 
         convertor rs;
 
-        ros::Rate loop_rate(50);
+        ros::Rate loop_rate(240);
         while (ros::ok())
         {
 
