@@ -1,1 +1,1 @@
-Code to convert LAAS specific mocap data to nav_msgs::Odometr
+Code to convert LAAS specific mocap data to nav_msgs::Odometry
